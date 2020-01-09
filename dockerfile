@@ -6,6 +6,10 @@ RUN pip install Flask
 
 RUN pip install pika
 
+RUN pip install -r requirements.txt
+
+RUN pip install requests
+
 RUN apk add git
 
 RUN mkdir /app
