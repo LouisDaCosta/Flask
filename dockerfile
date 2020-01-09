@@ -2,8 +2,8 @@
 FROM ubuntu:latest
 
 #Update
-RUN sudo apt-get update
-RUN sudo apt-get upgrade
+RUN apt-get update
+RUN  apt-get upgrade
 
 #Creation dir
 #########RUN mkdir /app
