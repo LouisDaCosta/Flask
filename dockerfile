@@ -21,7 +21,7 @@ CMD wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key
 RUN apt-get update
 
 #Installation RabbitMQ
-RUN apt-get install rabbitmq-server
+CMD apt-get install rabbitmq-server
 
 #Start RabbitMQ
 CMD systemctl start rabbitmq-server.service
