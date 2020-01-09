@@ -1,10 +1,6 @@
 #Image Alpine
 FROM alpine:3.11
 
-#Installation Docker
-RUN sudo apt install docker 
-RUN sudo apt install docker.io
-
 #Creation Repertoire
 RUN mkdir /app
 
