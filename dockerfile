@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:latest
 
 RUN echo "deb http://cloudfront.debian.net/debian stretch main\n \
   deb http://cloudfront.debian.net/debian stretch-updates main\n \
