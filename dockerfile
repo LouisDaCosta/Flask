@@ -5,7 +5,7 @@ FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get upgrade
 #Installation Docker
-RUN apt install docker
+RUN sudo apt install docker
 
 #Lancement daemon docker
 RUN service docker start
