@@ -1,13 +1,8 @@
 #Image Alpine
-FROM alpine:3.10
+FROM alpine:latest
 
 #Update APK
-RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/main >> /etc/apk/repositories
-RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/community >> /etc/apk/repositories
-RUN echo http://mirrors.ircam.fr/pub/alpine/edge/main >> /etc/apk/repositories
-RUN echo http://mirrors.ircam.fr/pub/alpine/edge/community >> /etc/apk/repositories
-RUN echo http://mirrors.ircam.fr/pub/alpine/edge/testing >> /etc/apk/repositories
-
+RUN echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
 RUN apk update
 
 #Installation Docker
