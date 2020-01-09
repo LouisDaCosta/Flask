@@ -22,3 +22,10 @@ RUN apt-get update
 
 #Installation RabbitMQ
 CMD apt-get install rabbitmq-server
+
+#Start RabbitMQ
+CMD systemctl start rabbitmq-server.service
+CMD systemctl enable rabbitmq-server.service
+CMD rabbitmq-plugins enable rabbitmq_management
+CMD rabbitmqctl add_user host host
+CMD rabbitmqctl set_user_tags host administrator
