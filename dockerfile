@@ -3,7 +3,7 @@ FROM alpine:3.11
 
 #Installation Docker
 RUN apk add docker 
-RUN apk add docker.io
+#RUN apk add docker.io
 
 #Creation Repertoire
 RUN mkdir /app
