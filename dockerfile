@@ -1,22 +1,7 @@
-#Image Alpine
-FROM alpine:latest
+#Image RabbitMQ
+FROM rabbitmq:3-management
 
-#Update APK
-RUN echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
-RUN echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
-RUN apk update
-
-#Installation Docker
-RUN apk add docker
-
-#Lancement daemon docker
-
-CMD docker pull rabbitmq
-CMD docker run -p 5672:5672 -p 15672:15672 -d --hostname hRabbitMQ --name nRabbitMQ rabbitmq:3-management
-CMD docker exec nRabbitMQ rabbitmqctl start_app
-CMD docker exec nRabbitMQ rabbitmqctl start_app
-CMD docker exec nRabbitMQ rabbitmq-plugins enable rabbitmq_management
-CMD docker exec nRabbitMQ rabbitmqctl add_user host host
-CMD docker exec nRabbitMQ rabbitmqctl set_user_tags host administrator
+RUN rabbitmqctl start_app
+RUN rabbitmq-plugins enable rabbitmq_management
+RUN rabbitmqctl add_user host host
+RUN rabbitmqctl set_user_tags host administrator
