@@ -1,11 +1,8 @@
 #Image Docker
-FROM alpine:3.2
+FROM alpine:3.10
 
-CMD echo http://dl-1.alpinelinux.org/alpine/v3.2/main >> /etc/apk/repositories
-CMD echo http://dl-2.alpinelinux.org/alpine/v3.2/main >> /etc/apk/repositories
-CMD echo http://dl-3.alpinelinux.org/alpine/v3.2/main >> /etc/apk/repositories
-CMD echohttp://dl-4.alpinelinux.org/alpine/v3.2/main >> /etc/apk/repositories
-CMD echohttp://dl-5.alpinelinux.org/alpine/v3.2/main>> /etc/apk/repositories
+RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/community >> /etc/apk/repositories
+RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/main >> /etc/apk/repositories
 
 RUN apk update
 
