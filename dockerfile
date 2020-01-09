@@ -12,23 +12,23 @@ RUN mkdir /app
 WORKDIR /app
 
 #Installation Erlang
-RUN wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_20.1-1~ubuntu~xenial_amd64.deb
-RUN dpkg -i esl-erlang_20.1-1\~ubuntu\~xenial_amd64.deb
-RUN echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | tee /etc/apt/sources.list.d/bintray.rabbitmq.list
-RUN wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add -
+CMD wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_20.1-1~ubuntu~xenial_amd64.deb
+CMD dpkg -i esl-erlang_20.1-1\~ubuntu\~xenial_amd64.deb
+CMD echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | tee /etc/apt/sources.list.d/bintray.rabbitmq.list
+CMD wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add -
 
 #Update
-RUN apt-get update
+CMD apt-get update
 
 #Installation RabbitMQ
-RUN apt-get install rabbitmq-server
+CMD apt-get install rabbitmq-server
 
 #Start RabbitMQ
-RUN systemctl start rabbitmq-server.service
-RUN systemctl enable rabbitmq-server.service
-RUN rabbitmq-plugins enable rabbitmq_management
-RUN rabbitmqctl add_user host host
-RUN rabbitmqctl set_user_tags host administrator
+CMD systemctl start rabbitmq-server.service
+CMD systemctl enable rabbitmq-server.service
+CMD rabbitmq-plugins enable rabbitmq_management
+CMD rabbitmqctl add_user host host
+CMD rabbitmqctl set_user_tags host administrator
 
 #Test
 CMD echo test
