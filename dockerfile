@@ -1,13 +1,4 @@
-#Image Docker
-FROM alpine:3.10
+FROM python:3-alpine
 
-RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/community >> /etc/apk/repositories
-RUN echo http://mirrors.ircam.fr/pub/alpine/v3.10/main >> /etc/apk/repositories
-
-RUN apk update
-
-#Installation python3/pip3
-RUN apk add python3
-
-
+RUN python -m pip install --upgrade pip
 
