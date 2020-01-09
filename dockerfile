@@ -30,5 +30,4 @@ CMD rabbitmq-plugins enable rabbitmq_management
 CMD rabbitmqctl add_user host host
 CMD rabbitmqctl set_user_tags host administrator
 
-#Test
-CMD echo test
+
