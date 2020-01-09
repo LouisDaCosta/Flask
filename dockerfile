@@ -1,14 +1,14 @@
-#Image Ubuntu
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
+RUN apt-get update && apt-get install \
+  -y --no-install-recommends python3 python3-virtualenv
 
-#Update
-RUN apt-get update
-RUN apt-get upgrade
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-#Python3
-RUN apt-get install python3 -y apt-transport-https
-RUN apt-get install python3-pip -y apt-transport-https
-
+# Install dependencies:
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 
