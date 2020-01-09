@@ -9,7 +9,7 @@ RUN apk update
 RUN apk add docker
 
 #Lancement daemon docker
-RUN service docker start
+RUN service docker restart
 
 RUN docker pull rabbitmq
 RUN docker run -p 5672:5672 -p 15672:15672 -d --hostname hRabbitMQ --name nRabbitMQ rabbitmq:3-management
