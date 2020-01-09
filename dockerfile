@@ -1,33 +1,20 @@
-# Pull base image.
-FROM dockerfile/ubuntu
+#Image Alpine
+FROM alpine:latest
 
-# Add files.
-ADD bin/rabbitmq-start /usr/local/bin/
+#Update APK
+RUN echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
+RUN apk update
 
-# Install RabbitMQ.
-RUN \
-  wget -qO - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add - && \
-  echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list && \
-  apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y rabbitmq-server && \
-  rm -rf /var/lib/apt/lists/* && \
-  rabbitmq-plugins enable rabbitmq_management && \
-  echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config && \
-  chmod +x /usr/local/bin/rabbitmq-start
+#Installation Docker
+RUN apk add docker
 
-# Define environment variables.
-ENV RABBITMQ_LOG_BASE /data/log
-ENV RABBITMQ_MNESIA_BASE /data/mnesia
+#Lancement daemon docker
+RUN service docker start
 
-# Define mount points.
-VOLUME ["/data/log", "/data/mnesia"]
-
-# Define working directory.
-WORKDIR /data
-
-# Define default command.
-CMD ["rabbitmq-start"]
-
-# Expose ports.
-EXPOSE 5672
-EXPOSE 15672
+CMD docker pull rabbitmq
+CMD docker run -p 5672:5672 -p 15672:15672 -d --hostname hRabbitMQ --name nRabbitMQ rabbitmq:3-management
+CMD docker exec nRabbitMQ rabbitmqctl start_app
+CMD docker exec nRabbitMQ rabbitmqctl start_app
+CMD docker exec nRabbitMQ rabbitmq-plugins enable rabbitmq_management
+CMD docker exec nRabbitMQ rabbitmqctl add_user host host
+CMD docker exec nRabbitMQ rabbitmqctl set_user_tags host administrator
