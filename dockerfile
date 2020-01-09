@@ -2,7 +2,8 @@
 FROM ubuntu:latest
 
 #Update AP
-
+RUN apt-get update
+RUN apt-get upgrade
 #Installation Docker
 RUN apt install docker
 
