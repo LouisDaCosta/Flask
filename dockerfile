@@ -12,5 +12,5 @@ RUN apk update
 RUN apk add docker
 
 #Lancement daemon docker
-RUN service docker status
+CMD service docker status
 
