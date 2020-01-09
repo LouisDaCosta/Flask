@@ -1,12 +1,10 @@
 #Image Alpine
-FROM alpine:latest
+FROM ubuntu:latest
 
-#Update APK
-RUN echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
-RUN apk update
+#Update AP
 
 #Installation Docker
-RUN apk add docker
+RUN apt install docker
 
 #Lancement daemon docker
 RUN service docker start
