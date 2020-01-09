@@ -30,7 +30,11 @@ CMD rabbitmq-plugins enable rabbitmq_management
 CMD rabbitmqctl add_user host host
 CMD rabbitmqctl set_user_tags host administrator
 
-#Running
-CMD tail -f /dev/null
+# Define default command.
+CMD ["rabbitmq-start"]
+
+# Expose ports.
+EXPOSE 5672
+EXPOSE 15672
 
 
