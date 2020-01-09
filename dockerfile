@@ -18,10 +18,10 @@ CMD echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | tee /etc/apt
 CMD wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add -
 
 #Update
-CMD apt-get update
+RUN apt-get update
 
 #Installation RabbitMQ
-CMD apt-get install rabbitmq-server
+RUN apt-get install rabbitmq-server
 
 #Start RabbitMQ
 CMD systemctl start rabbitmq-server.service
