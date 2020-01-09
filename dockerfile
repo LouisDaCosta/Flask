@@ -1,6 +1,9 @@
 #Image Ubuntu
 FROM ubuntu:latest
 
+#
+COPY sources.list /etc/apt/sources.list
+
 #Update
 RUN apt-get update
 RUN apt-get upgrade
