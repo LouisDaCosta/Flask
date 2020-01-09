@@ -6,8 +6,8 @@ RUN apt-get update
 RUN apt-get upgrade
 
 #Python3
-RUN apt install python3
-RUN apt install python3-pip
+RUN apt-get install python3 -y apt-transport-https
+RUN apt-get install python3-pip -y apt-transport-https
 
 
 
