@@ -8,6 +8,6 @@ RUN apk update
 
 #Installation python3/pip3
 RUN apk add python3
-RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+
 
 
